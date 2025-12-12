@@ -4,13 +4,13 @@ import random
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="EcoScanner Deluxe", page_icon="🌿", layout="centered")
 
-# ---------------- PASTEL THEME CSS ----------------
+# ---------------- DARK THEME CSS ----------------
 CSS = """
 <style>
 .stApp {
-    background: linear-gradient(135deg, #ffd1dc, #c1f0f6, #f7e3ff);
+    background: linear-gradient(135deg, #1a0033, #330066, #660099); /* Dark royal purple */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: #ffffff; /* White text */
     padding: 20px;
 }
 .big-title {
@@ -18,11 +18,11 @@ CSS = """
     text-align:center;
     font-weight:700;
     margin-top:-10px;
-    color:#ff6f91;
+    color:#e1bee7; /* Light purple title */
 }
 .subtitle {
     text-align:center;
-    color:#555;
+    color:#ce93d8; /* Lighter purple subtitle */
     margin-top:-10px;
     margin-bottom:10px;
 }
@@ -34,14 +34,35 @@ CSS = """
 @keyframes bounce {0%,20%,50%,80%,100% {transform:translateY(0);} 40% {transform:translateY(-10px);} 60% {transform:translateY(-6px);}}
 @keyframes wiggle {0%,100% {transform:rotate(0deg);} 25% {transform:rotate(10deg);} 75% {transform:rotate(-10deg);}}
 @keyframes hop {0%,20%,50%,80%,100% {transform:translateY(0);} 40% {transform:translateY(-15px);} 60% {transform:translateY(-10px);}}
-.mascot.bounce {animation: bounce 1.5s infinite;}
-.mascot.wiggle {animation: wiggle 1s infinite;}
-.mascot.hop {animation: hop 1.5s infinite;}
-.achievement-badge {font-size:30px; animation: pop 0.7s; display:inline-block; margin:5px;}
+.mascot.bounce {animation: bounce 1.5s infinite; color:#ffeb3b;}
+.mascot.wiggle {animation: wiggle 1s infinite; color:#ffeb3b;}
+.mascot.hop {animation: hop 1.5s infinite; color:#ffeb3b;}
+.achievement-badge {
+    font-size:30px; 
+    animation: pop 0.7s; 
+    display:inline-block; 
+    margin:5px; 
+    color:#ffd700; /* Gold badges */
+}
 @keyframes pop {0% {transform: scale(0);} 70% {transform: scale(1.3);} 100% {transform: scale(1);}}
-.progress-container {height:22px;background:#ffe4e1;border-radius:14px;overflow:hidden;margin-top:10px;}
-.progress-bar {height:100%;background:#ff6f91;}
-.stButton>button {background-color:#ffd1dc; color:#fff; font-weight:bold; border-radius:12px; height:40px;}
+.progress-container {
+    height:22px;
+    background:#4a0073; /* Dark container */
+    border-radius:14px;
+    overflow:hidden;
+    margin-top:10px;
+}
+.progress-bar {
+    height:100%;
+    background:#d1c4e9; /* Light purple bar */
+}
+.stButton>button {
+    background-color:#6a0dad; 
+    color:#fff; 
+    font-weight:bold; 
+    border-radius:12px; 
+    height:40px;
+}
 </style>
 """
 st.markdown(CSS, unsafe_allow_html=True)
@@ -92,10 +113,13 @@ with tabs[0]:
         score = max(0,min(100,score))
 
         st.subheader("📊 Eco Score")
-        st.markdown(f"<div class='progress-container'><div class='progress-bar' style='width:{score}%;'></div></div>", unsafe_allow_html=True)
-        st.write(f"**Score:** {score}/100")
+        st.markdown(
+            f"<div class='progress-container'><div class='progress-bar' style='width:{score}%;'></div></div>",
+            unsafe_allow_html=True
+        )
+        st.markdown(f"<span style='color:#ffffff;'>**Score:** {score}/100</span>", unsafe_allow_html=True)
         diff = abs(score-guess)
-        st.write(f"Your guess: {guess} — Difference: {diff}")
+        st.markdown(f"<span style='color:#ffffff;'>Your guess: {guess} — Difference: {diff}</span>", unsafe_allow_html=True)
 
         if score>=75 or diff==0:
             st.session_state['achievements'].append("Perfect Scanner! 🌿")
@@ -127,7 +151,7 @@ with tabs[1]:
                 st.error(f"Wrong! Answer: {q['answer']}")
             st.session_state['quiz_index'] += 1
     else:
-        st.write(f"Quiz complete! Score: {st.session_state['quiz_score']}/{len(questions)}")
+        st.markdown(f"<span style='color:#ffffff;'>Quiz complete! Score: {st.session_state['quiz_score']}/{len(questions)}</span>", unsafe_allow_html=True)
         if st.session_state['quiz_score'] == len(questions):
             st.session_state['achievements'].append("Quiz Master! 🌟")
             st.balloons()
@@ -144,7 +168,7 @@ with tabs[2]:
     traits = ["Recycled","Plastic","Organic","Solar","Toxic Chemicals","Glass Packaging"]
     shown = random.sample(traits,3)
     st.write("### Traits of Product:")
-    for t in shown: st.write(f"- {t}")
+    for t in shown: st.markdown(f"<span style='color:#ffffff;'>- {t}</span>", unsafe_allow_html=True)
 
     guess = st.slider("Your guess for eco score",0,100,50,key="challenge_guess")
 
@@ -154,9 +178,9 @@ with tabs[2]:
             if t in ["Recycled","Organic","Solar","Glass Packaging"]: score+=15
             else: score-=20
         score = max(0,min(100,score))
-        st.write(f"### Real Score: {score}")
+        st.markdown(f"<span style='color:#ffffff;'>### Real Score: {score}</span>", unsafe_allow_html=True)
         diff = abs(score-guess)
-        st.write(f"Difference: {diff}")
+        st.markdown(f"<span style='color:#ffffff;'>Difference: {diff}</span>", unsafe_allow_html=True)
 
         st.session_state['leaderboard'].append(score)
         st.session_state['leaderboard'] = sorted(st.session_state['leaderboard'], reverse=True)[:5]
@@ -167,7 +191,8 @@ with tabs[2]:
             st.balloons()
 
     st.subheader("🏆 Leaderboard")
-    for i, s in enumerate(st.session_state['leaderboard']): st.write(f"{i+1}. Score: {s}")
+    for i, s in enumerate(st.session_state['leaderboard']):
+        st.markdown(f"<span style='color:#ffffff;'>{i+1}. Score: {s}</span>", unsafe_allow_html=True)
 
 # ---------------- ACHIEVEMENTS ----------------
 with tabs[3]:
@@ -176,4 +201,4 @@ with tabs[3]:
         for a in st.session_state['achievements']:
             st.markdown(f"<span class='achievement-badge'>🏅 {a}</span>", unsafe_allow_html=True)
     else:
-        st.write("No achievements unlocked yet.")
+        st.markdown("<span style='color:#ffffff;'>No achievements unlocked yet.</span>", unsafe_allow_html=True)
