@@ -1,37 +1,28 @@
-/* Apply pastel gradient to the main Streamlit app container */
 .stApp {
-    background: linear-gradient(135deg, #ffd1dc, #c1f0f6, #f7e3ff);
+    background: linear-gradient(135deg, #6a0dad, #7b1fa2, #9c27b0); /* Royal purple gradient */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: #fff; /* White text looks better on dark purple */
     padding: 20px;
 }
-
-/* Button styling */
-.stButton>button {
-    background-color: #ffb3c1;
-    color: white;
-    border-radius: 15px;
-    padding: 10px 20px;
-    font-size: 18px;
-    margin-top: 10px;
-    transition: 0.3s;
+.big-title {
+    font-size:40px;
+    text-align:center;
+    font-weight:700;
+    margin-top:-10px;
+    color:#f3e5f5; /* Light pastel title color */
 }
-
-.stButton>button:hover {
-    background-color: #ff9ab3;
+.subtitle {
+    text-align:center;
+    color:#e1bee7; /* Light subtitle */
+    margin-top:-10px;
+    margin-bottom:10px;
 }
-
-/* Input box styling */
-.stTextInput>div>input {
-    border-radius: 10px;
-    padding: 10px;
-    border: 2px solid #f7c6ff;
+.mascot {
+    text-align:center;
+    font-size:70px;
+    margin-top:-14px;
 }
-
-/* Card container for results and explanation */
-.stMarkdown {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 15px;
-}
+.achievement-badge {font-size:30px; animation: pop 0.7s; display:inline-block; margin:5px;}
+.progress-container {height:22px;background:#9c27b0;border-radius:14px;overflow:hidden;margin-top:10px;}
+.progress-bar {height:100%;background:#d1c4e9;}
+.stButton>button {background-color:#ab47bc; color:#fff; font-weight:bold; border-radius:12px; height:40px;}
