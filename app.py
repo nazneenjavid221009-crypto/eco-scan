@@ -77,7 +77,7 @@ for key in ['mode','achievements','leaderboard','quiz_index','quiz_score','music
 
 # ---------------- MASCOT ----------------
 def mascot(animation='bounce'):
-    st.markdown(f"<div class='mascot {animation}'>🐣🌿</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='mascot {animation}'>☘️🌿</div>", unsafe_allow_html=True)
     st.markdown("<div class='big-title'>EcoScanner Deluxe</div>", unsafe_allow_html=True)
     st.markdown("<div class='subtitle'>Cute, interactive, mobile-friendly eco app!</div>", unsafe_allow_html=True)
 
@@ -210,4 +210,5 @@ with tabs[3]:
             st.markdown(f"<span class='achievement-badge'>🏅 {a}</span>", unsafe_allow_html=True)
     else:
         st.markdown("<span style='color:#ffffff;'>No achievements unlocked yet.</span>", unsafe_allow_html=True)
+
 
