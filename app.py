@@ -7,9 +7,11 @@ st.set_page_config(page_title="EcoScanner Deluxe", page_icon="🌿", layout="cen
 # ---------------- PASTEL THEME CSS ----------------
 CSS = """
 <style>
-body {
-    background: #fff0f5;
+.stApp {
+    background: linear-gradient(135deg, #ffd1dc, #c1f0f6, #f7e3ff);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    padding: 20px;
 }
 .big-title {
     font-size:40px;
@@ -45,18 +47,11 @@ body {
 st.markdown(CSS, unsafe_allow_html=True)
 
 # ---------------- SESSION STATE ----------------
-if 'mode' not in st.session_state:
-    st.session_state['mode'] = 'scanner'
-if 'achievements' not in st.session_state:
-    st.session_state['achievements'] = []
-if 'leaderboard' not in st.session_state:
-    st.session_state['leaderboard'] = []
-if 'quiz_index' not in st.session_state:
-    st.session_state['quiz_index'] = 0
-if 'quiz_score' not in st.session_state:
-    st.session_state['quiz_score'] = 0
-if 'music_played' not in st.session_state:
-    st.session_state['music_played'] = False
+for key in ['mode','achievements','leaderboard','quiz_index','quiz_score','music_played']:
+    if key not in st.session_state:
+        if key in ['achievements','leaderboard']: st.session_state[key] = []
+        elif key in ['quiz_index','quiz_score']: st.session_state[key] = 0
+        else: st.session_state[key] = False if key=='music_played' else 'scanner'
 
 # ---------------- MASCOT ----------------
 def mascot(animation='bounce'):
@@ -68,10 +63,9 @@ mascot()
 
 # ---------------- BACKGROUND MUSIC ----------------
 music_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-if st.checkbox("🔊 Play background music", value=True):
-    if not st.session_state['music_played']:
-        st.audio(music_url, format='audio/mp3', start_time=0)
-        st.session_state['music_played'] = True
+if not st.session_state['music_played']:
+    st.audio(music_url, format='audio/mp3', start_time=0)
+    st.session_state['music_played'] = True
 
 # ---------------- APP TABS ----------------
 tabs = st.tabs(["Scanner","Quiz","Challenge","Achievements"])
@@ -127,7 +121,7 @@ with tabs[1]:
             if choice==q['answer']:
                 st.session_state['quiz_score'] += 1
                 st.success("Correct! 🌱")
-                st.session_state['achievements'].append(f"Quiz Q{idx+1} Master!")
+                st.session_state['achievements'].append(f"Quiz Q{idx+1} Master! 🏅")
                 st.balloons()
             else:
                 st.error(f"Wrong! Answer: {q['answer']}")
@@ -152,7 +146,7 @@ with tabs[2]:
     st.write("### Traits of Product:")
     for t in shown: st.write(f"- {t}")
 
-    guess = st.slider("Your guess for eco score",0,100,50)
+    guess = st.slider("Your guess for eco score",0,100,50,key="challenge_guess")
 
     if st.button("Reveal Score"):
         score = 50
