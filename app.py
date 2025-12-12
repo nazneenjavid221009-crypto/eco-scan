@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 # ---------------- PAGE CONFIG ----------------
-st.set_page_config(page_title="EcoScanner Deluxe", page_icon="🌿", layout="centered")
+st.set_page_config(page_title="EcoScanner", page_icon="🌿", layout="centered")
 
 # ---------------- DARK THEME CSS ----------------
 CSS = """
@@ -105,16 +105,16 @@ with tabs[0]:
     mascot('bounce')
     st.header("🔎 Scanner Mode")
 
-    material = st.selectbox("Material", ["Cotton","Polyester","Plastic","Metal","Glass","Bamboo","Organic Cotton","Biodegradable Mix"])
+    material = st.selectbox("Material", ["Cotton","Jute","Plastic","Metal","Glass","Cardboard"])
     packaging = st.selectbox("Packaging", ["Plastic Wrapper","Cardboard Box","Cloth Bag","Glass Jar","No Packaging","Paper Wrap"])
-    category = st.selectbox("Category", ["Clothing","Electronics","Food","Accessories","Cosmetics","Other"])
-    eco_traits = st.multiselect("Eco Features", ["Recyclable","Recycled Material","Organic","Low Energy","Solar Powered","Plastic-Free"])
+    category = st.selectbox("Category", ["Clothing","Food","Accessories","Cosmetics","Utensils","Other"])
+    eco_traits = st.multiselect("Eco Features", ["Recyclable","Non Recyclable","Organic","Plastic-Free"])
     guess = st.slider("Your guess for eco score", 0, 100, 50)
 
     if st.button("✨ Analyze"):
         score = 50
-        if material in ["Polyester","Plastic"]: score -=25
-        if material in ["Bamboo","Organic Cotton","Glass"]: score +=20
+        if material in ["Plastic"]: score -=25
+        if material in ["Glass"]: score +=20
         if packaging in ["Plastic Wrapper"]: score -=15
         if packaging in ["Paper Wrap","Glass Jar"]: score +=10
         score += len(eco_traits)*10
@@ -210,3 +210,4 @@ with tabs[3]:
             st.markdown(f"<span class='achievement-badge'>🏅 {a}</span>", unsafe_allow_html=True)
     else:
         st.markdown("<span style='color:#ffffff;'>No achievements unlocked yet.</span>", unsafe_allow_html=True)
+
