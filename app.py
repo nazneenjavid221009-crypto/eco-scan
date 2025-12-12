@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-import base64
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(page_title="EcoScanner Deluxe", page_icon="🌿", layout="centered")
@@ -84,18 +83,13 @@ def mascot(animation='bounce'):
 
 mascot()
 
-# ---------------- BACKGROUND MUSIC ----------------
+# ---------------- BACKGROUND MUSIC (ONLINE) ----------------
 if not st.session_state['music_played']:
-    # Load local MP3 file
-    audio_file = "background.mp3"  # Place your file in the same folder
-    with open(audio_file, "rb") as f:
-        audio_bytes = f.read()
-    # Convert to base64 to embed hidden audio
-    b64 = base64.b64encode(audio_bytes).decode()
+    music_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
     st.markdown(
         f"""
         <audio autoplay loop>
-            <source src="data:audio/mp3;base64,{b64}" type="audio/mpeg">
+            <source src="{music_url}" type="audio/mpeg">
         </audio>
         """,
         unsafe_allow_html=True
