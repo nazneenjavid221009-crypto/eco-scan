@@ -1,11 +1,12 @@
-/* Background gradient pastel */
-body {
+/* Apply pastel gradient to the main Streamlit app container */
+.stApp {
     background: linear-gradient(135deg, #ffd1dc, #c1f0f6, #f7e3ff);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    padding: 20px;
 }
 
-/* Card style for results */
+/* Button styling */
 .stButton>button {
     background-color: #ffb3c1;
     color: white;
@@ -13,14 +14,21 @@ body {
     padding: 10px 20px;
     font-size: 18px;
     margin-top: 10px;
+    transition: 0.3s;
 }
 
+.stButton>button:hover {
+    background-color: #ff9ab3;
+}
+
+/* Input box styling */
 .stTextInput>div>input {
     border-radius: 10px;
     padding: 10px;
     border: 2px solid #f7c6ff;
 }
 
+/* Card container for results and explanation */
 .stMarkdown {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 20px;
