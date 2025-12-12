@@ -1,0 +1,29 @@
+/* Background gradient pastel */
+body {
+    background: linear-gradient(135deg, #ffd1dc, #c1f0f6, #f7e3ff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Card style for results */
+.stButton>button {
+    background-color: #ffb3c1;
+    color: white;
+    border-radius: 15px;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.stTextInput>div>input {
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #f7c6ff;
+}
+
+.stMarkdown {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
