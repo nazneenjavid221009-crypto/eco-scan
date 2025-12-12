@@ -1,7 +1,7 @@
 .stApp {
-    background: linear-gradient(135deg, #6a0dad, #7b1fa2, #9c27b0); /* Royal purple gradient */
+    background: linear-gradient(135deg, #2c003e, #4a0073, #6a0dad); /* Dark purple gradient */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff; /* White text looks better on dark purple */
+    color: #ffffff; /* White text for readability */
     padding: 20px;
 }
 .big-title {
@@ -9,11 +9,11 @@
     text-align:center;
     font-weight:700;
     margin-top:-10px;
-    color:#f3e5f5; /* Light pastel title color */
+    color:#e1bee7; /* Light purple title */
 }
 .subtitle {
     text-align:center;
-    color:#e1bee7; /* Light subtitle */
+    color:#ce93d8; /* Lighter purple subtitle */
     margin-top:-10px;
     margin-bottom:10px;
 }
@@ -22,7 +22,28 @@
     font-size:70px;
     margin-top:-14px;
 }
-.achievement-badge {font-size:30px; animation: pop 0.7s; display:inline-block; margin:5px;}
-.progress-container {height:22px;background:#9c27b0;border-radius:14px;overflow:hidden;margin-top:10px;}
-.progress-bar {height:100%;background:#d1c4e9;}
-.stButton>button {background-color:#ab47bc; color:#fff; font-weight:bold; border-radius:12px; height:40px;}
+.achievement-badge {
+    font-size:30px; 
+    animation: pop 0.7s; 
+    display:inline-block; 
+    margin:5px;
+    color:#ffd700; /* Gold badges stand out on dark bg */
+}
+.progress-container {
+    height:22px;
+    background:#4a0073; /* Darker bar container */
+    border-radius:14px;
+    overflow:hidden;
+    margin-top:10px;
+}
+.progress-bar {
+    height:100%;
+    background:#d1c4e9; /* Light purple progress */
+}
+.stButton>button {
+    background-color:#6a0dad; 
+    color:#fff; 
+    font-weight:bold; 
+    border-radius:12px; 
+    height:40px;
+}
