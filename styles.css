@@ -1,62 +1,54 @@
-body, .stApp {
-    background: linear-gradient(135deg, #1a0033, #330066, #660099);
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
+CSS = """
+<style>
+.stApp {
+    background: linear-gradient(135deg, #2c003e, #4a0073, #6a0dad); /* Dark royal purple */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
 }
-
-/* Titles */
 .big-title {
-    font-size: 42px;
-    font-weight: 700;
-    text-align: center;
-    color: #e1bee7;
+    font-size:40px;
+    text-align:center;
+    font-weight:700;
+    margin-top:-10px;
+    color:#e1bee7; /* Light purple */
 }
 .subtitle {
-    text-align: center;
-    color: #ce93d8;
+    text-align:center;
+    color:#ce93d8;
+    margin-top:-10px;
+    margin-bottom:10px;
 }
-
-/* Mascot */
 .mascot {
-    font-size: 70px;
-    text-align: center;
+    text-align:center;
+    font-size:70px;
+    margin-top:-14px;
 }
-@keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+.achievement-badge {
+    font-size:30px;
+    animation: pop 0.7s;
+    display:inline-block;
+    margin:5px;
+    color:#ffd700; /* Gold badges */
 }
-.bounce {
-    animation: bounce 1.5s infinite;
+.progress-container {
+    height:22px;
+    background:#4a0073;
+    border-radius:14px;
+    overflow:hidden;
+    margin-top:10px;
 }
-
-/* Tree */
-.tree {
-    font-size: 100px;
-    text-align: center;
-    margin: 10px;
+.progress-bar {
+    height:100%;
+    background:#d1c4e9;
 }
-
-/* Buttons */
 .stButton>button {
-    background-color: #6a0dad;
-    color: white;
-    border-radius: 12px;
-    font-weight: bold;
+    background-color:#6a0dad;
+    color:#fff;
+    font-weight:bold;
+    border-radius:12px;
+    height:40px;
 }
-
-/* Badges */
-.badge {
-    font-size: 28px;
-    margin: 8px;
-    color: gold;
-    animation: pop 0.6s;
-}
-@keyframes pop {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
-}
-
-/* Hide audio player */
-audio {
-    display: none;
-}
+</style>
+"""
+st.markdown(CSS, unsafe_allow_html=True)
